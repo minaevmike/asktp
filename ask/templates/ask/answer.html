@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Work pls">
+<meta name="author" content="mike" >
+<title>Ask minaev</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/bootstrap/css/navbar-fixed-top.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap-tag-cloud.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+{% include "ask/error.html" %}
+<div class="container-fluid"> 
+  {% include "ask/top.html" %} 
+  <div class="row-fluid">
+    <div class="col-md-8 col-lg-9">
+    <ul class="nav nav-tabs">
+          {% if user.is_authenticated %}
+			<div class="pull-right">
+      		<a data-toggle="modal" href="#myModal" class="btn btn-success">Ask</a> 
+      	</div>
+      	{% endif %}
+    </ul>
+      <div class="row-fluid" >
+	{% if question %}
+        <div class="question">
+          <div class="container" >
+            <div class="col-md-2">
+            <a href="/like/?id={{ question.id }}" class="btn btn-default btn-sm">
+  							<span class="glyphicon glyphicon-plus"></span>
+					</a>
+               <h4 style="display:inline;"><span class="label label-default btn-sm">{{ question.rating }}</span></h4>
+					<a href="/dislike/?id={{ question.id }}" class="btn btn-default">
+  							<span class="glyphicon glyphicon-minus"></span>
+					</a>
+            </div>
+            <div class="col-md-10">
+              <div class="jumbotron" style="border: 2px solid black">
+                <div class="container" style="overflow: hidden;">
+                  <h2>{{ question.header }}</h2>
+                  <p>{{ question.body }}</p>
+                  <p> 
+                 <a href="/user/?id={{ question.user.id }}"> {{ question.user.username }} </a>
+                 </p>
+                </div>
+              </div>
+            </div>
+          </div>
+         {% if user.is_authenticated %}
+        <form id="answer" action="/ans/?id={{ question.id }}" method="post">{% csrf_token %} 
+			{{ AnswerForm.content }}
+			<button type="submit" class="btn btn-primary" form="answer">Answer!</button>	
+			{% endif %}
+			</form>
+        </div>
+	{% endif %}
+      </div>
+    </div>
+   {% include "ask/search.html" %}
+	{% include "ask/modal.html" %} 
+	{% include "ask/register.html" %}
+  <!-- /.modal --> 
+  <!-- Bootstrap core JavaScript
+    ================================================== --> 
+  <!-- Placed at the end of the document so the pages load faster --> 
+  <script src="/bootstrap/js/jquery.js"></script> 
+  <script src="/bootstrap/js/bootstrap.min.js"></script> 
+  <script src="/bootstrap/js/bootstrap-tag-cloud.js"></script>
+  </script> 
+</div>
+</body>
+</html>

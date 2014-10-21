@@ -1,0 +1,33 @@
+ <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <form id="register" action="/register/" method="post"> {% csrf_token %}  
+   <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Register</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="inputTitle" class="col-md-2 control-label">Email</label>
+              <div class="col-md-10">
+             <input type="text" class="form-control" placeholder="Email address" id="id_mail" name="mail" form="register" required>          
+              </div>
+              <label for="inputQuestion" class="col-md-2 control-label">Password</label>
+             <div class="col-md-10">
+             		<input type="password" class="form-control" placeholder="Password" id="id_password" name="password" form="register" required> 					          
+              </div>
+              <label for="inputTags" class="col-md-2 control-label">Nickname</label>
+              <div class="col-md-10">
+              		<input type="text" class="form-control" placeholder="Nickname" id="id_name" name="name" form="register" required>            
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" form="register">Register</button>
+        </div>
+      </div>
+    </div> 
+  </div>
+  </form>
+</div>

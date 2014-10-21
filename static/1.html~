@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bootstrap 101 Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="../../assets/js/html5shiv.js"></script>
+<script src="../../assets/js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<h1>Hello, world!</h1>
+<div class='container'>
+    <div class='row'>
+        <div class='col-span-8'>
+            <legend>Lorem</legend>
+            <div>[Large amounts of text]</div>
+        </div>
+        <div class='col-span-4'>
+            <div class="well col-span-4" data-spy='affix'>
+            <div class='btn btn-large btn-danger col-span-12'>This is fixed</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

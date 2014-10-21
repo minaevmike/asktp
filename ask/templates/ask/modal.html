@@ -1,0 +1,32 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <form id="ask" action="/ask/" method="post"> {% csrf_token %}  
+   <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Ask your question here</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="inputTitle" class="col-md-2 control-label">Title</label>
+              <div class="col-md-10">
+              {{ AskForm.header }}           
+              </div>
+              <label for="inputQuestion" class="col-md-2 control-label">Question</label>
+             <div class="col-md-10">
+             		{{ AskForm.body }}					          
+              </div>
+              <label for="inputTags" class="col-md-2 control-label">Tags</label>
+              <div class="col-md-10">
+              		{{ AskForm.tags }}           
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" form="ask">Ask!</button>
+        </div>
+      </div>
+    </div> 
+  </form>
+ </div>

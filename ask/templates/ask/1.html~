@@ -1,0 +1,7 @@
+<html>
+<form action="action.php" name="myform" method="post"> 
+   <input type="text" name="mytext" size="50"> 
+  <textarea name="msg" cols="20" rows=”10” ></textarea> 
+    <input name="Submit" type=submit value="Отправить данные">  
+</form>
+</html>

@@ -1,0 +1,20 @@
+<ul class="pager">
+	{% if latest_question.has_previous %}
+	{% if popular %}
+  <li class="previous"><a href="/popular/?page={{ latest_question.previous_page_number }}">&larr; Previous</a></li>
+	{% else %}
+  <li class="previous"><a href="/?page={{ latest_question.previous_page_number }}">&larr; Previous</a></li>
+   {% endif %}  
+  {% else %}
+  <li class="previous disabled"><a href="#">&larr; Previous</a></li>
+  {% endif %}
+  {% if latest_question.has_next %}
+  {% if popular %}
+  <li class="next"><a href="/popular/?page={{ latest_question.next_page_number }}">Next &rarr;</a></li>
+  {% else %}
+  <li class="next"><a href="/?page={{ latest_question.next_page_number }}">Next &rarr;</a></li>
+  {% endif %}
+  {% else %}
+  <li class="next disabled"><a href="#">Next &rarr;</a></li>
+  {% endif %}
+</ul>

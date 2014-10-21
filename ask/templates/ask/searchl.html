@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Work pls">
+<meta name="author" content="mike" >
+<title>Ask minaev</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/bootstrap/css/navbar-fixed-top.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap-tag-cloud.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+{% include "ask/error.html" %}
+<div class="container" style="min-width: 1200px; overflow: scroll-x;"> 
+ {% include "ask/top.html" %} 
+  <div class="row-fluid" style="min-width: 1000px; overflow: scroll-x;">
+    <div class="col-md-8 col-lg-9">
+      <div class="col-md-9 col-lg-10 ">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#new" data-toggle="tab">New</a></li>
+          <li><a href="#popular" data-toggle="tab">Popular</a></li>
+        </ul>
+      </div>
+       {% if user.is_authenticated %}
+      <div class="col-md-3 col-lg-2 pull-right"> 
+      <a data-toggle="modal" href="#myModal" class="btn btn-success">Ask</a>
+      </div>
+      {% endif %}
+{% include "ask/body.html" %}
+    </div>
+   {% include "ask/search.html" %}
+    
+  </div>
+
+  {% include "ask/modal.html" %} 
+  {% include "ask/register.html" %}
+  <!-- /.modal --> 
+  <!-- Bootstrap core JavaScript
+    ================================================== --> 
+  <!-- Placed at the end of the document so the pages load faster --> 
+  <script src="/bootstrap/js/jquery.js"></script> 
+  <script src="/bootstrap/js/bootstrap.min.js"></script> 
+  <script src="/bootstrap/js/bootstrap-tag-cloud.js"></script>
+  </script> 
+</div>
+{% include "ask/pagination.html" %}
+</body>
+</html>

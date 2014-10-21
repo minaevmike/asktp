@@ -1,0 +1,35 @@
+ <div class="row-fluid"  style="min-width: 700px; overflow: scroll-x;">
+	{% if latest_question %}
+	{% for question in latest_question %}
+        <div class="question">
+          <div class="container" >
+            <div class="col-md-2">
+            	<a href="/like/?id={{ question.id }}" class="btn btn-default">
+  							<span class="glyphicon glyphicon-plus"></span>
+					</a>
+               <h4 style="display:inline;"><span class="label label-default">{{ question.rating }}</span></h4>
+					<a href="/dislike/?id={{ question.id }}" class="btn btn-default">
+  							<span class="glyphicon glyphicon-minus"></span>
+					</a>
+            </div>
+            <div class="col-md-10">
+              <div class="jumbotron" style="border: 2px solid black">
+                <div class="container" style="overflow: hidden;">
+                  <h2>{{ question.header }}</h2>
+                  <p>{{ question.body }}</p>
+                </div>
+                <p>
+                	<a href="/answers/?id={{ question.id }}" class="btn btn-default btn-sm ">Read answers </a>
+                	<a href="/answer/?id={{ question.id }}" class="btn btn-default btn-sm ">Answer </a>
+                	<a href="/user/?id={{ question.user.id }}"> {{ question.user.username }} </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+	{% endfor %}
+	{% else %}<span class="label label-alert">Ooops, nothing here</span>
+	<h2><p class="text-center">Opps, nothing here</p></h2>
+               
+	{% endif %}
+</div>

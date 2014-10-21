@@ -1,0 +1,12 @@
+<ul class="pager">
+	{% if latest_question.has_previous %}
+  <li class="previous"><a href="/?page={{ latest_question.previous_page_number }}">&larr; Previous</a></li>
+  {% else %}
+  <li class="previous disabled"><a href="#">&larr; Previous</a></li>
+  {% endif %}
+  {% if latest_question.has_next %}
+  <li class="next"><a href="/?page={{ latest_question.next_page_number }}">Next &rarr;</a></li>
+  {% else %}
+  <li class="next disabled"><a href="#">Next &rarr;</a></li>
+  {% endif %}
+</ul>

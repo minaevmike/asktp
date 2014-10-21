@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Work pls">
+<meta name="author" content="mike" >
+<title>Ask minaev</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/bootstrap/css/navbar-fixed-top.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap-tag-cloud.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+{% include "ask/error.html" %}
+<div class="container" style="min-width: 1200px; overflow: scroll-x;"> 
+ {% include "ask/top.html" %} 
+  <div class="row-fluid" style="min-width: 1000px; overflow: scroll-x;">
+    <div class="col-md-8 col-lg-9">
+        <ul class="nav nav-tabs">
+               {% if user.is_authenticated %}
+     				 <div class="pull-right"> 
+      			<a data-toggle="modal" href="#myModal" class="btn btn-success">Ask</a>
+      			</div>
+     				 {% endif %}
+        </ul>
+       {% if user_i %}
+      <h4> Name: <span class="label label-primary">{{ user_i.username }}</span></h4> 
+      <h4> Registrate date: <span class="label label-primary">{{ user_i.date_joined }}</span></h4>
+      <h4> Rating: <span class="label label-primary">{{ user_i.rating }}</span></h4>
+      <div class="col-md-6">
+      {% if l_question %}
+		<h4> <p class="text-center">Last questions</p> </h4>
+		{% for q in l_question %}
+		<div class="jumbotron" style="border: 2px solid black">
+                <div class="container" style="overflow: hidden;">
+                  <h2>{{ q.header }}</h2>
+                </div>
+                <p>
+                	<a href="/answers/?id={{ q.id }}" class="btn btn-default ">Read answers </a>
+                	<a href="/answer/?id={{ q.id }}" class="btn btn-default ">Answer </a>
+                </p>
+      </div>
+		{% endfor %}
+      {% else %}
+      <h4> <p class="text-center">No questions :((</p> </h4>
+      {% endif %}
+      </div>
+      <div class="col-md-6">
+		{% if l_answer %}
+		<h4> <p class="text-center">Last answers</p> </h4>
+		{% for a in l_answer %}
+		<div class="jumbotron" style="border: 2px solid black">
+                <div class="container" style="overflow: hidden;">
+                  <h2>{{ a.content }}</h2>
+                </div>
+                <p>
+                	<a href="/answers/?id={{ a.question.id }}" class="btn btn-default ">Read </a>
+                </p>
+      </div>
+		{% endfor %}
+      {% else %}
+      <h4> <p class="text-center">No answers :((</p> </h4>
+      {% endif %}
+      </div>
+      {% else %}
+      <h2><p class="text-center">NO SUCH USER </p> </h2> 
+      {% endif %}
+    </div>
+   {% include "ask/search.html" %}    
+  </div>
+  {% include "ask/modal.html" %} 
+  {% include "ask/register.html" %}
+  <!-- /.modal --> 
+  <!-- Bootstrap core JavaScript
+    ================================================== --> 
+  <!-- Placed at the end of the document so the pages load faster --> 
+  <script src="/bootstrap/js/jquery.js"></script> 
+  <script src="/bootstrap/js/bootstrap.min.js"></script> 
+  <script src="/bootstrap/js/bootstrap-tag-cloud.js"></script>
+  </script> 
+</div>
+{% include "ask/pagination.html" %}
+</body>
+</html>
